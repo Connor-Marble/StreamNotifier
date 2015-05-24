@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:id="@+id/LinearLayout2"
+        >
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView2"
+            android:layout_gravity="center_horizontal"
+            >
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="New Notification"
+                    android:id="@+id/Heading"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    />
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:background="#ff000000"/>
+
+            <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="918dp"
+                        android:gravity="center_horizontal"
+                        android:outlineProvider="paddedBounds"
+                        >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Stream Info"
+                        android:id="@+id/textView4"
+                        android:textSize="36sp"
+                        android:layout_gravity="left"/>
+
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <EditText
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/editText"
+                                    android:hint="Channel Name (required)"
+                                    android:textSize="24sp"
+                                    android:layout_gravity="left"/>
+
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText2"
+                            android:textSize="24sp"
+                            android:hint="Stream Title Contains"
+                            android:layout_gravity="left"/>
+                </LinearLayout>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Timing"
+                        android:id="@+id/textView5"
+                        android:layout_gravity="left"
+                        android:textSize="36sp"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                </LinearLayout>
+
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
+
+                <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Start Time:"
+                            android:id="@+id/textView"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="36sp"
+                            />
+
+                <TimePicker
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/timePicker2"
+                            android:layout_gravity="center_horizontal"
+                            android:timePickerMode="spinner"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="End Time:"
+                            android:id="@+id/textView3"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="36sp"/>
+
+                        <TimePicker
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/timePicker"
+                            android:timePickerMode="spinner"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Days Active:"
+                        android:id="@+id/textView2"
+                        android:textSize="36sp"/>
+
+                <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monday"
+                        android:id="@+id/monswitch"
+                        android:textSize="24sp"/>
+
+                <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tuesday"
+                        android:id="@+id/switch1"/>
+
+                <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wednesday"
+                        android:id="@+id/switch2"/>
+
+                <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thursday"
+                        android:id="@+id/switch3"/>
+
+                <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Friday"
+                        android:id="@+id/switch4"/>
+
+                <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saturday"
+                        android:id="@+id/switch5"/>
+
+                <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sunday"
+                        android:id="@+id/switch6"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
