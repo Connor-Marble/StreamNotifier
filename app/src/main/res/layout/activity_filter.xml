@@ -2,21 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:id="@+id/LinearLayout2"
-        >
+              android:layout_height="wrap_content" android:id="@+id/LinearLayout2"
+              >
 
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/scrollView2"
-            android:layout_gravity="center_horizontal"
-            >
+            android:layout_gravity="center_horizontal">
 
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center">
+                android:layout_height="wrap_content"
+                android:gravity="center" android:id="@+id/form"
+                android:weightSum="1">
 
             <TextView
                     android:layout_width="wrap_content"
@@ -25,9 +25,8 @@
                     android:text="New Notification"
                     android:id="@+id/Heading"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="40sp"
-                    android:textStyle="bold"
-                    />
+                    android:textSize="38sp"
+                    android:textStyle="bold"/>
             <View
                     android:layout_width="fill_parent"
                     android:layout_height="3dp"
@@ -36,10 +35,10 @@
             <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="918dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:outlineProvider="paddedBounds"
-                        >
+                        android:layout_weight="7.48">
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -97,16 +96,14 @@
                         android:layout_width="fill_parent"
                         android:layout_height="1dp"
                         android:background="#ff111111"/>
-
                 <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Start Time:"
+                            android:text="  Start:"
                             android:id="@+id/textView"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="36sp"
-                            />
+                            android:textSize="30sp"
+                            android:layout_gravity="left"/>
 
                 <TimePicker
                             android:layout_width="wrap_content"
@@ -119,10 +116,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="End Time:"
+                            android:text="  End:"
                             android:id="@+id/textView3"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="36sp"/>
+                            android:layout_gravity="left"
+                            android:textSize="30sp"/>
 
                         <TimePicker
                             android:layout_width="wrap_content"
@@ -136,50 +133,88 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="Days Active:"
                         android:id="@+id/textView2"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp" android:layout_gravity="left"/>
 
-                <Switch
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Monday"
-                        android:id="@+id/monswitch"
-                        android:textSize="24sp"/>
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
 
-                <Switch
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tuesday"
-                        android:id="@+id/switch1"/>
-
-                <Switch
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Wednesday"
-                        android:id="@+id/switch2"/>
-
-                <Switch
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Thursday"
-                        android:id="@+id/switch3"/>
-
-                <Switch
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Friday"
-                        android:id="@+id/switch4"/>
-
-                <Switch
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Saturday"
-                        android:id="@+id/switch5"/>
-
-                <Switch
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sunday"
-                        android:id="@+id/switch6"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:layout_gravity="bottom">
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Monday"
+                            android:id="@+id/monswitch"
+                            android:textSize="24sp" android:layout_gravity="left" android:splitTrack="false"
+                            android:paddingLeft="10dp" android:paddingRight="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tuesday"
+                            android:id="@+id/tueswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Wednesday"
+                            android:id="@+id/wedswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Thursday"
+                            android:id="@+id/thuswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Friday"
+                            android:id="@+id/friswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Saturday"
+                            android:id="@+id/satswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Sunday"
+                            android:id="@+id/sunswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                </LinearLayout>
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal">
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cancel"
+                            android:id="@+id/cancel_btn"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save"
+                            android:id="@+id/save_btn"/>
+                </LinearLayout>
 
             </LinearLayout>
 
