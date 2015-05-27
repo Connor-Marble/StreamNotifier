@@ -83,4 +83,19 @@ public class NotificationFilter implements Serializable {
         return enabled&active;
     }
 
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public String getStreamName() {
+        return streamName;
+    }
+
+    public int getStartHr() {
+        return startHr;
+    }
+
+    public int getEndHr() {
+        return endHr;
+    }
 }
