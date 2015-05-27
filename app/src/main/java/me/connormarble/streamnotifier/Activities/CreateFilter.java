@@ -30,6 +30,14 @@ public class CreateFilter extends Activity implements View.OnClickListener {
         saveBtn = (Button)findViewById(R.id.save_btn);
         cancelBtn = (Button)findViewById(R.id.cancel_btn);
 
+        monSwitch = (Switch)findViewById(R.id.monswitch);
+        tueSwitch = (Switch)findViewById(R.id.tueswitch);
+        wedSwitch = (Switch)findViewById(R.id.wedswitch);
+        thuSwitch = (Switch)findViewById(R.id.thuswitch);
+        friSwitch = (Switch)findViewById(R.id.friswitch);
+        satSwitch = (Switch)findViewById(R.id.satswitch);
+        sunSwitch = (Switch)findViewById(R.id.sunswitch);
+
         saveBtn.setOnClickListener(this);
         cancelBtn.setOnClickListener(this);
     }
