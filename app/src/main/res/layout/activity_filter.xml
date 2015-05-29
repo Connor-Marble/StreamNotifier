@@ -8,7 +8,7 @@
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/scrollView2"
+            android:id="@+id/Scroller"
             android:layout_gravity="center_horizontal">
 
         <LinearLayout
@@ -62,7 +62,7 @@
                     <EditText
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/editText"
+                                    android:id="@+id/channelInput"
                                     android:hint="Channel Name (required)"
                                     android:textSize="24sp"
                                     android:layout_gravity="left"/>
@@ -70,7 +70,7 @@
                     <EditText
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/editText2"
+                            android:id="@+id/streamInput"
                             android:textSize="24sp"
                             android:hint="Stream Title Contains"
                             android:layout_gravity="left"/>
@@ -108,7 +108,7 @@
                 <TimePicker
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/timePicker2"
+                            android:id="@+id/startPicker"
                             android:layout_gravity="center_horizontal"
                             android:timePickerMode="spinner"/>
 
@@ -124,7 +124,7 @@
                         <TimePicker
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/timePicker"
+                            android:id="@+id/endPicker"
                             android:timePickerMode="spinner"/>
 
                 <TextView

@@ -3,11 +3,14 @@ package me.connormarble.streamnotifier.Activities;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import me.connormarble.streamnotifier.Data.NotificationFilter;
 import me.connormarble.streamnotifier.R;
+import me.connormarble.streamnotifier.Utils.FileHelper;
 
 
 public class StreamNotifier extends ActionBarActivity implements View.OnClickListener {
@@ -50,5 +53,17 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         Intent intent = new Intent(this, CreateFilter.class);
 
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        NotificationFilter[] filters = FileHelper.getSavedFilters(getApplicationContext());
+        if(filters!=null) {
+            for (NotificationFilter filter : filters) {
+                Log.d("filter", "\n"+filter.toString());
+            }
+        }
     }
 }
