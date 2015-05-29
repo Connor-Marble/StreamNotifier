@@ -1,9 +1,7 @@
 package me.connormarble.streamnotifier.Activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
@@ -11,10 +9,8 @@ import me.connormarble.streamnotifier.R;
 import me.connormarble.streamnotifier.Utils.FileHelper;
 import org.apache.commons.lang.ArrayUtils;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
-import java.io.FileOutputStream;
 
 /**
  * Created by connoc on 5/23/2015.
