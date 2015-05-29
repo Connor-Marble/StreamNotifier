@@ -55,6 +55,7 @@ public class NotificationFilter implements Serializable {
     }
 
     private void initDaysHashMap(boolean startValue){
+        daysActive = new HashMap<Integer, Boolean>();
         daysActive.put(Calendar.MONDAY, startValue);
         daysActive.put(Calendar.TUESDAY, startValue);
         daysActive.put(Calendar.WEDNESDAY, startValue);
@@ -97,5 +98,15 @@ public class NotificationFilter implements Serializable {
 
     public int getEndHr() {
         return endHr;
+    }
+
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("Notification Filter:\n");
+        stringBuilder.append("    Channel: " + channelName + "\n");
+        stringBuilder.append("    stream filter: " + streamName + "\n");
+
+        return stringBuilder.toString();
     }
 }
