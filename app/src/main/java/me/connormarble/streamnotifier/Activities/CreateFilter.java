@@ -100,6 +100,13 @@ public class CreateFilter extends Activity implements View.OnClickListener {
     }
 
     private boolean validateForm(){
-        return true;
+        boolean valid = true;
+
+        if(channelName.getText().length()==0){
+            valid = false;
+            Toast.makeText(getApplicationContext(),"Please enter a channel name", Toast.LENGTH_SHORT).show();
+        }
+
+        return valid;
     }
 }
