@@ -1,5 +1,8 @@
 package me.connormarble.streamnotifier.Data;
 
+import android.util.Log;
+import org.apache.commons.lang.StringUtils;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,10 +37,12 @@ public class NotificationFilter implements Serializable {
 
         initDaysHashMap(true);
         enabled = true;
+
+        Log.d("notification time", getTimeString());
     }
 
     public NotificationFilter(String channelName, String streamName, int startHr,
-                              int endHr, int startMin, int endMin, int[] daysActive){
+                              int startMin, int endHr, int endMin, int[] daysActive){
         this.startMin = startMin;
         this.startHr = startHr;
 
@@ -108,5 +113,18 @@ public class NotificationFilter implements Serializable {
         stringBuilder.append("    stream filter: " + streamName + "\n");
 
         return stringBuilder.toString();
+    }
+
+    public String getTimeString(){
+        StringBuilder timeString = new StringBuilder();
+        timeString.append(startHr);
+        timeString.append(':');
+        timeString.append(StringUtils.leftPad(Integer.toString(startMin), 2, '0'));
+        timeString.append(" - ");
+        timeString.append(endHr);
+        timeString.append(':');
+        timeString.append(StringUtils.leftPad(Integer.toString(endMin), 2, '0'));
+
+        return timeString.toString();
     }
 }
