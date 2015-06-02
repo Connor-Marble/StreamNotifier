@@ -16,12 +16,15 @@ import me.connormarble.streamnotifier.Data.NotificationFilter;
 public class NotificationView extends View {
 
     NotificationFilter filter;
+    int outline = 2;
 
-    public NotificationView(Context context, NotificationFilter filter) {
+    int backgroundColor;
+
+    public NotificationView(Context context, NotificationFilter filter, int backgroundColor) {
         super(context);
 
         this.filter = filter;
-
+        this.backgroundColor = backgroundColor;
     }
 
 
@@ -29,14 +32,32 @@ public class NotificationView extends View {
     @Override
     public void onDraw(Canvas canvas){
 
+        drawBackground(canvas);
+        drawContent(canvas);
+
+    }
+
+    private void drawContent(Canvas canvas){
         Paint paint = new Paint();
         paint.setColor(Color.BLACK);
+
+        paint.setTextSize(54f);
+
+        canvas.drawText(" " + filter.getChannelName(), 0, getHeight()/2f, paint);
+
+    }
+
+    private void drawBackground(Canvas canvas){
+        Paint paint = new Paint();
+        paint.setColor(Color.BLACK);
+
         paint.setStrokeWidth(10f);
 
-        canvas.drawLine(getLeft(), getTop(), getRight(), getTop(), paint);
-        canvas.drawLine(getLeft(), getBottom(), getRight(), getBottom(), paint);
-        canvas.drawLine(getLeft(), getTop(), getLeft(), getBottom(), paint);
-        canvas.drawLine(getRight(), getTop(), getRight(), getBottom(), paint);
+        canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
+
+        paint.setColor(backgroundColor);
+
+        canvas.drawRect(outline, outline, getWidth()-outline, getHeight()-outline, paint);
     }
 
 

@@ -1,6 +1,7 @@
 package me.connormarble.streamnotifier.Activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -75,9 +76,14 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
 
         listHolder.removeAllViews();
 
-        for(NotificationFilter filter:filters){
+        int oddColor = getResources().getColor(R.color.oddList);
+        int evenColor = getResources().getColor(R.color.evenList);
 
-            NotificationView notificationView = new NotificationView(getApplicationContext(), filter);
+        for(int i =0;i<filters.length;i++){
+
+            int color = i%2==0?evenColor:oddColor;
+
+            NotificationView notificationView = new NotificationView(getApplicationContext(), filters[i], color);
 
             notificationView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200));
 
