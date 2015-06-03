@@ -52,6 +52,12 @@ public class CreateFilter extends Activity implements View.OnClickListener {
 
         saveBtn.setOnClickListener(this);
         cancelBtn.setOnClickListener(this);
+
+        startPicker.setCurrentHour(0);
+        startPicker.setCurrentMinute(0);
+
+        endPicker.setCurrentHour(23);
+        endPicker.setCurrentMinute(59);
     }
 
     @Override
@@ -84,14 +90,14 @@ public class CreateFilter extends Activity implements View.OnClickListener {
     }
 
     private int[] getSelectedDays(){
-        Switch[] daySwitches = new Switch[]{monSwitch, tueSwitch, wedSwitch,
-                thuSwitch, friSwitch, satSwitch, sunSwitch};
+        Switch[] daySwitches = new Switch[]{sunSwitch, monSwitch, tueSwitch, wedSwitch,
+                thuSwitch, friSwitch, satSwitch};
 
         ArrayList<Integer> result = new ArrayList<Integer>();
 
         for(int i =0;i<daySwitches.length; i++){
             if(daySwitches[i].isChecked()){
-                result.add(Integer.valueOf(i));
+                result.add(Integer.valueOf(i+1));
             }
         }
         Integer[] castResult = new Integer[result.size()];
@@ -100,6 +106,13 @@ public class CreateFilter extends Activity implements View.OnClickListener {
     }
 
     private boolean validateForm(){
-        return true;
+        boolean valid = true;
+
+        if(channelName.getText().length()==0){
+            valid = false;
+            Toast.makeText(getApplicationContext(),"Please enter a channel name", Toast.LENGTH_SHORT).show();
+        }
+
+        return valid;
     }
 }

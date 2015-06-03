@@ -1,5 +1,8 @@
 package me.connormarble.streamnotifier.Data;
 
+import android.util.Log;
+import org.apache.commons.lang.StringUtils;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,10 +37,12 @@ public class NotificationFilter implements Serializable {
 
         initDaysHashMap(true);
         enabled = true;
+
+        Log.d("notification time", getTimeString());
     }
 
     public NotificationFilter(String channelName, String streamName, int startHr,
-                              int endHr, int startMin, int endMin, int[] daysActive){
+                              int startMin, int endHr, int endMin, int[] daysActive){
         this.startMin = startMin;
         this.startHr = startHr;
 
@@ -108,5 +113,32 @@ public class NotificationFilter implements Serializable {
         stringBuilder.append("    stream filter: " + streamName + "\n");
 
         return stringBuilder.toString();
+    }
+
+    public String getTimeString(){
+        StringBuilder timeString = new StringBuilder();
+        timeString.append(startHr);
+        timeString.append(':');
+        timeString.append(StringUtils.leftPad(Integer.toString(startMin), 2, '0'));
+        timeString.append(" - ");
+        timeString.append(endHr);
+        timeString.append(':');
+        timeString.append(StringUtils.leftPad(Integer.toString(endMin), 2, '0'));
+
+        return timeString.toString();
+    }
+
+    public boolean[] getDaysActive(){
+        boolean[] result = new boolean[7];
+
+        result[0] = daysActive.get(Calendar.SUNDAY);
+        result[1] = daysActive.get(Calendar.MONDAY);
+        result[2] = daysActive.get(Calendar.TUESDAY);
+        result[3] = daysActive.get(Calendar.WEDNESDAY);
+        result[4] = daysActive.get(Calendar.THURSDAY);
+        result[5] = daysActive.get(Calendar.FRIDAY);
+        result[6] = daysActive.get(Calendar.SATURDAY);
+
+        return result;
     }
 }
