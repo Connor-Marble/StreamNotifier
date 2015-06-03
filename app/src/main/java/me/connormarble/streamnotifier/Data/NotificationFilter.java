@@ -127,4 +127,18 @@ public class NotificationFilter implements Serializable {
 
         return timeString.toString();
     }
+
+    public boolean[] getDaysActive(){
+        boolean[] result = new boolean[7];
+
+        result[0] = daysActive.get(Calendar.SUNDAY);
+        result[1] = daysActive.get(Calendar.MONDAY);
+        result[2] = daysActive.get(Calendar.TUESDAY);
+        result[3] = daysActive.get(Calendar.WEDNESDAY);
+        result[4] = daysActive.get(Calendar.THURSDAY);
+        result[5] = daysActive.get(Calendar.FRIDAY);
+        result[6] = daysActive.get(Calendar.SATURDAY);
+
+        return result;
+    }
 }
