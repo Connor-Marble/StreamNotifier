@@ -4,4 +4,108 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView2">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:gravity="fill_horizontal|center_horizontal">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Global Filter Settings"
+                    android:id="@+id/global_title" android:layout_gravity="center_horizontal" android:textSize="36dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Start Time:"
+                    android:id="@+id/textView6" android:paddingTop="15dp" android:paddingBottom="15dp"/>
+            <TimePicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/global_start" android:layout_gravity="center_horizontal"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceLarge" android:text="End Time:"
+                      android:id="@+id/label" android:paddingTop="15dp" android:paddingBottom="15dp"/>
+            <TimePicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/global_end" android:layout_gravity="center_horizontal"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" android:layout_gravity="bottom">
+                <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Monday"
+                        android:id="@+id/monswitch_global"
+                        android:textSize="24sp" android:layout_gravity="left" android:splitTrack="false"
+                        android:paddingLeft="10dp" android:paddingRight="10dp" android:enabled="true"
+                        android:checked="true"/>
+                <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tuesday"
+                        android:id="@+id/tueswitch_global" android:textSize="24sp" android:layout_gravity="left"
+                        android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                        android:checked="true"/>
+                <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Wednesday"
+                        android:id="@+id/wedswitch_global" android:textSize="24sp" android:layout_gravity="left"
+                        android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                        android:checked="true"/>
+                <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Thursday"
+                        android:id="@+id/thuswitch_global" android:textSize="24sp" android:layout_gravity="left"
+                        android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                        android:checked="true"/>
+                <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Friday"
+                        android:id="@+id/friswitch_global" android:textSize="24sp" android:layout_gravity="left"
+                        android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                        android:checked="true"/>
+                <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Saturday"
+                        android:id="@+id/satswitch_global" android:textSize="24sp" android:layout_gravity="left"
+                        android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                        android:checked="true"/>
+                <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sunday"
+                        android:id="@+id/sunswitch_global" android:textSize="24sp" android:layout_gravity="left"
+                        android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                        android:checked="true"/>
+
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        android:id="@+id/global_filter_cancel"/>
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:id="@+id/global_filter_save"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
