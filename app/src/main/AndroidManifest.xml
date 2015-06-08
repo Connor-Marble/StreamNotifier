@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.GlobalFilter">
+            <intent-filter>
+                <action android:name=".Activities.GlobalFilter"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
