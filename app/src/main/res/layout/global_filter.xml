@@ -35,6 +35,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/global_end" android:layout_gravity="center_horizontal"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Days Active"
+                    android:id="@+id/days_label_global"/>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
@@ -94,7 +100,7 @@
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_height="fill_parent" android:gravity="center_horizontal">
                 <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
