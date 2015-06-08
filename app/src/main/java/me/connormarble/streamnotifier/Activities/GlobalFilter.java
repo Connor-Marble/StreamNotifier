@@ -12,7 +12,7 @@ import me.connormarble.streamnotifier.R;
 /**
  * Created by connor on 6/4/15.
  */
-public class GlobalFilterActivity extends Activity {
+public class GlobalFilter extends Activity {
 
     Button saveBtn;
     Button cancelBtn;
