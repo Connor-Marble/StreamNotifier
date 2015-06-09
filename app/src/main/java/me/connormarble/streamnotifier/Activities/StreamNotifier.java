@@ -47,12 +47,16 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == me.connormarble.streamnotifier.R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_settings:
+                return true;
+            case R.id.action_global_filter:
+                startActivity(new Intent(this, GlobalFilter.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

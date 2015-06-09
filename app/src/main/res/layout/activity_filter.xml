@@ -110,7 +110,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/startPicker"
                             android:layout_gravity="center_horizontal"
-                            android:timePickerMode="spinner"/>
+                            android:timePickerMode="clock"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/endPicker"
-                            android:timePickerMode="spinner"/>
+                            android:timePickerMode="clock"/>
 
                 <TextView
                         android:layout_width="wrap_content"
