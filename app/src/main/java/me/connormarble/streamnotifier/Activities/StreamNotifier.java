@@ -87,7 +87,7 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
 
             int color = i%2==0?evenColor:oddColor;
 
-            NotificationView notificationView = new NotificationView(getApplicationContext(), filters[i], color);
+            NotificationView notificationView = new NotificationView(getApplicationContext(), filters[i], color, this);
 
             notificationView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200));
 
@@ -96,4 +96,5 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         }
 
     }
+
 }
