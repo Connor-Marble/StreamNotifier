@@ -93,6 +93,14 @@ public class NotificationFilter implements Serializable {
         return channelName;
     }
 
+    public int getStartMin() {
+        return startMin;
+    }
+
+    public int getEndMin() {
+        return endMin;
+    }
+
     public String getStreamName() {
         return streamName;
     }
@@ -140,5 +148,31 @@ public class NotificationFilter implements Serializable {
         result[6] = daysActive.get(Calendar.SATURDAY);
 
         return result;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        NotificationFilter other = (NotificationFilter)obj;
+        if(other == null)
+            return false;
+
+        if(!StringUtils.equals(streamName, other.getStreamName()))
+            return false;
+
+        if(!StringUtils.equals(channelName, other.getChannelName()))
+            return false;
+
+        if(!StringUtils.equals(getTimeString(), other.getTimeString()))
+            return false;
+
+        boolean[] otherDays = other.getDaysActive();
+        boolean[] daysActive = getDaysActive();
+
+        for(int i=0;i<daysActive.length;i++){
+            if(otherDays[i]!=daysActive[i])
+                return false;
+        }
+
+        return true;
     }
 }
