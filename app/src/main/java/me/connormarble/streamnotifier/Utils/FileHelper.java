@@ -30,12 +30,14 @@ public class FileHelper {
             objectOut.close();
 
         } catch (IOException ex){
-            Toast.makeText(context, "Failed to save notification", Toast.LENGTH_SHORT).show();
+            if(context!=null)
+                Toast.makeText(context, "Failed to save notification", Toast.LENGTH_SHORT).show();
             ex.printStackTrace();
             return;
         }
 
-        Toast.makeText(context,"New Notification Created", Toast.LENGTH_SHORT).show();
+        if(context!=null)
+            Toast.makeText(context,"New Notification Created", Toast.LENGTH_SHORT).show();
     }
 
     public static NotificationFilter[] getSavedFilters(Context context){
@@ -65,5 +67,51 @@ public class FileHelper {
         }
 
         return filterList.toArray(new NotificationFilter[filterList.size()]);
+    }
+
+    public static void removeFilter(NotificationFilter filter, Context context){
+        NotificationFilter[] filters = getSavedFilters(context);
+        NotificationFilter[] newFilters = new NotificationFilter[filters.length-1];
+
+        boolean foundremoved = false;
+        int i =0;
+        while(i<newFilters.length){
+            if(filters[i].equals(filter))
+                foundremoved = true;
+
+            int index = foundremoved?i+1:i;
+
+            newFilters[i] = filters[index];
+            i++;
+        }
+
+        overwriteFilters(newFilters, context);
+    }
+
+    private static void overwriteFilters(NotificationFilter[] filters, Context context){
+        String fileName = context.getString(R.string.save_location);
+
+        try{
+            FileOutputStream fileOut = new FileOutputStream(context.getFilesDir()+fileName);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+
+            for(NotificationFilter filter:filters){
+                objectOut.writeObject(filter);
+            }
+
+            objectOut.close();
+        }
+        catch (EOFException ex){
+            Log.d("SaveDebug","End of filter list");
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+        }
+
+    }
+
+    public static void replaceFilter(NotificationFilter old, NotificationFilter replacement, Context context){
+        removeFilter(old, context);
+        saveFilter(replacement, context);
     }
 }
