@@ -3,4 +3,5 @@
     <string name="action_settings">Settings</string>
     <string name="action_global_filter">Set Global Filter</string>
     <string name="save_location">Notification_File</string>
+    <string name="filter_pass_id">notificationfilterid</string>
 </resources>

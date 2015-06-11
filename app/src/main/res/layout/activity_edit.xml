@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:id="@+id/LinearLayout2"
+        >
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Scroller"
+            android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" android:id="@+id/form"
+                android:weightSum="1">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Edit Notification"
+                    android:id="@+id/Heading"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="38sp"
+                    android:textStyle="bold"/>
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:background="#ff000000"/>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:outlineProvider="paddedBounds"
+                    android:layout_weight="7.48">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Stream Info"
+                        android:id="@+id/edit_textView4"
+                        android:textSize="36sp"
+                        android:layout_gravity="left"/>
+
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/edit_channelInput"
+                            android:hint="Channel Name (required)"
+                            android:textSize="24sp"
+                            android:layout_gravity="left"/>
+
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/edit_streamInput"
+                            android:textSize="24sp"
+                            android:hint="Stream Title Contains"
+                            android:layout_gravity="left"/>
+                </LinearLayout>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Timing"
+                        android:layout_gravity="left"
+                        android:textSize="36sp"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                </LinearLayout>
+
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="  Start:"
+                        android:id="@+id/textView"
+                        android:textSize="30sp"
+                        android:layout_gravity="left"/>
+
+                <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_startPicker"
+                        android:layout_gravity="center_horizontal"
+                        android:timePickerMode="clock"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="  End:"
+                        android:layout_gravity="left"
+                        android:textSize="30sp"/>
+
+                <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_endPicker"
+                        android:timePickerMode="clock"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Days Active:"
+                        android:id="@+id/edit_textView2"
+                        android:textSize="36sp" android:layout_gravity="left"/>
+
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:layout_gravity="bottom">
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Monday"
+                            android:id="@+id/edit_monswitch"
+                            android:textSize="24sp" android:layout_gravity="left" android:splitTrack="false"
+                            android:paddingLeft="10dp" android:paddingRight="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tuesday"
+                            android:id="@+id/edit_tueswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Wednesday"
+                            android:id="@+id/edit_wedswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Thursday"
+                            android:id="@+id/edit_thuswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Friday"
+                            android:id="@+id/edit_friswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Saturday"
+                            android:id="@+id/edit_satswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                    <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Sunday"
+                            android:id="@+id/edit_sunswitch" android:textSize="24sp" android:layout_gravity="left"
+                            android:paddingRight="10dp" android:paddingLeft="10dp" android:enabled="true"
+                            android:checked="true"/>
+                </LinearLayout>
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ff111111"/>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal">
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cancel"
+                            android:id="@+id/edit_cancel_btn"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save"
+                            android:id="@+id/edit_save_btn"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

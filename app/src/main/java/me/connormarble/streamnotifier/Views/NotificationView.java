@@ -1,6 +1,7 @@
 package me.connormarble.streamnotifier.Views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,7 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
+import me.connormarble.streamnotifier.Activities.EditFilter;
+import me.connormarble.streamnotifier.Activities.StreamNotifier;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
+import me.connormarble.streamnotifier.R;
 
 /**
  * Created by connor on 5/26/15.
@@ -23,8 +27,11 @@ public class NotificationView extends View implements View.OnTouchListener {
     int backgroundColor;
     boolean selected = false;
 
-    public NotificationView(Context context, NotificationFilter filter, int backgroundColor) {
+    StreamNotifier baseActivity;
+
+    public NotificationView(Context context, NotificationFilter filter, int backgroundColor, StreamNotifier baseActivity) {
         super(context);
+        this.baseActivity = baseActivity;
 
         this.filter = filter;
         this.backgroundColor = backgroundColor;
@@ -63,12 +70,12 @@ public class NotificationView extends View implements View.OnTouchListener {
         canvas.drawText(filter.getTimeString(), getWidth(), 60f, paint);
 
         //draw days active
-        char[] days = "SFTWTMS".toCharArray();
+        char[] days = "SMTWTFS".toCharArray();
         boolean[] daysActive = filter.getDaysActive();
 
         String dayList = "";
 
-        for(int i = daysActive.length-1;i>=0;i--){
+        for(int i = 0;i<daysActive.length;i++){
 
             String day = daysActive[i]?String.valueOf(days[i]):"-";
 
@@ -107,7 +114,10 @@ public class NotificationView extends View implements View.OnTouchListener {
 
         else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
             selected = false;
-            //open editing activity
+            Intent intent = new Intent(baseActivity.getApplicationContext(), EditFilter.class);
+            intent.putExtra(getContext().getString(R.string.filter_pass_id), filter);
+
+            baseActivity.startActivity(intent);
         }
 
         else if(motionEvent.getAction() == MotionEvent.ACTION_CANCEL){
