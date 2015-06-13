@@ -64,6 +64,7 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         Intent intent = new Intent(this, CreateFilter.class);
 
         startActivity(intent);
+
     }
 
     @Override

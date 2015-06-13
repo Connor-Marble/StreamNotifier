@@ -1,5 +1,6 @@
 package me.connormarble.streamnotifier.Views;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -15,6 +16,7 @@ import me.connormarble.streamnotifier.Activities.EditFilter;
 import me.connormarble.streamnotifier.Activities.StreamNotifier;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
 import me.connormarble.streamnotifier.R;
+import me.connormarble.streamnotifier.fragments.EditDialog;
 
 /**
  * Created by connor on 5/26/15.
@@ -114,10 +116,7 @@ public class NotificationView extends View implements View.OnTouchListener {
 
         else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
             selected = false;
-            Intent intent = new Intent(baseActivity.getApplicationContext(), EditFilter.class);
-            intent.putExtra(getContext().getString(R.string.filter_pass_id), filter);
-
-            baseActivity.startActivity(intent);
+            selectionPopup();
         }
 
         else if(motionEvent.getAction() == MotionEvent.ACTION_CANCEL){
@@ -127,5 +126,11 @@ public class NotificationView extends View implements View.OnTouchListener {
         invalidate();
 
         return true;
+    }
+
+    private void selectionPopup(){
+        DialogFragment selectionPopup = new EditDialog();
+        ((EditDialog)selectionPopup).setFilter(filter);
+        selectionPopup.show(baseActivity.getFragmentManager(), "options");
     }
 }
