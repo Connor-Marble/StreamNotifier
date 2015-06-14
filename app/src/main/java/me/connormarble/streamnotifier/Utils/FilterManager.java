@@ -12,7 +12,9 @@ import java.util.ArrayList;
 /**
  * Created by connor on 5/28/15.
  */
-public class FileHelper {
+public class FilterManager {
+
+
     public static void saveFilter(NotificationFilter filter, Context context ){
         String fileName = context.getString(R.string.save_location);
 
