@@ -2,47 +2,38 @@ package me.connormarble.streamnotifier.Utils;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Filter;
 import android.widget.Toast;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
+import me.connormarble.streamnotifier.Interfaces.FilterChangeListener;
 import me.connormarble.streamnotifier.R;
 
 import java.io.*;
 import java.util.ArrayList;
+
+import org.apache.commons.lang.ArrayUtils;
 
 /**
  * Created by connor on 5/28/15.
  */
 public class FilterManager {
 
+    Context context;
+    FilterChangeListener changeListener;
 
-    public static void saveFilter(NotificationFilter filter, Context context ){
-        String fileName = context.getString(R.string.save_location);
-
-        NotificationFilter[] oldFilters = getSavedFilters(context);
-
-        try {
-            FileOutputStream stream = new FileOutputStream(context.getFilesDir()+fileName, false);
-            ObjectOutputStream objectOut = new ObjectOutputStream(stream);
-            objectOut.writeObject(filter);
-
-            for(NotificationFilter oldFilter:oldFilters){
-                objectOut.writeObject(oldFilter);
-            }
-
-            objectOut.close();
-
-        } catch (IOException ex){
-            if(context!=null)
-                Toast.makeText(context, "Failed to save notification", Toast.LENGTH_SHORT).show();
-            ex.printStackTrace();
-            return;
-        }
-
-        if(context!=null)
-            Toast.makeText(context,"New Notification Created", Toast.LENGTH_SHORT).show();
+    public FilterManager(Context context, FilterChangeListener changeListener){
+        this.context = context;
+        this.changeListener = changeListener;
     }
 
-    public static NotificationFilter[] getSavedFilters(Context context){
+    public void saveFilter(NotificationFilter filter){
+
+        NotificationFilter[] oldFilters = getSavedFilters();
+        overwriteFilters((NotificationFilter[])ArrayUtils.add(oldFilters, filter));
+
+    }
+
+    public NotificationFilter[] getSavedFilters(){
         String fileName = context.getString(R.string.save_location);
 
         ArrayList<NotificationFilter> filterList = new ArrayList<NotificationFilter>();
@@ -71,8 +62,8 @@ public class FilterManager {
         return filterList.toArray(new NotificationFilter[filterList.size()]);
     }
 
-    public static void removeFilter(NotificationFilter filter, Context context){
-        NotificationFilter[] filters = getSavedFilters(context);
+    public void removeFilter(NotificationFilter filter){
+        NotificationFilter[] filters = getSavedFilters();
         NotificationFilter[] newFilters = new NotificationFilter[filters.length-1];
 
         boolean foundremoved = false;
@@ -87,10 +78,10 @@ public class FilterManager {
             i++;
         }
 
-        overwriteFilters(newFilters, context);
+        overwriteFilters(newFilters);
     }
 
-    private static void overwriteFilters(NotificationFilter[] filters, Context context){
+    private void overwriteFilters(NotificationFilter[] filters){
         String fileName = context.getString(R.string.save_location);
 
         try{
@@ -110,10 +101,25 @@ public class FilterManager {
             ex.printStackTrace();
         }
 
+        changeListener.onFilterChange();
+
     }
 
-    public static void replaceFilter(NotificationFilter old, NotificationFilter replacement, Context context){
-        removeFilter(old, context);
-        saveFilter(replacement, context);
+    private void swapFilter(NotificationFilter original, NotificationFilter updated){
+        NotificationFilter[] filters = getSavedFilters();
+
+        for(int i =0;i<filters.length; i++){
+            if(filters[i].equals(original)){
+                filters[i]=updated;
+                overwriteFilters(filters);
+                return;
+            }
+        }
+
+        Log.e("FilterManager", "Tried to replace non-existent filter");
+    }
+
+    public void replaceFilter(NotificationFilter old, NotificationFilter replacement){
+        swapFilter(old, replacement);
     }
 }
