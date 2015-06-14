@@ -8,7 +8,13 @@ import android.net.NetworkInfo;
  * Created by connor on 6/14/15.
  */
 public class NetworkManager {
-    public static boolean isConnected(Context context){
+    Context context;
+
+    public NetworkManager(Context context){
+        this.context = context;
+    }
+
+    private boolean isConnected(){
         ConnectivityManager connectManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -17,5 +23,11 @@ public class NetworkManager {
         return netInfo!=null;
     }
 
+    public boolean updateServerFilters(FilterManager filterManager){
+
+
+
+        return false;
+    }
 
 }

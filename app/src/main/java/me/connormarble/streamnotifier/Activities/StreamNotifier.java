@@ -1,7 +1,6 @@
 package me.connormarble.streamnotifier.Activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,17 +9,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
+import me.connormarble.streamnotifier.Interfaces.FilterChangeListener;
 import me.connormarble.streamnotifier.R;
-import me.connormarble.streamnotifier.Utils.FileHelper;
+import me.connormarble.streamnotifier.Utils.FilterManager;
 import me.connormarble.streamnotifier.Views.NotificationView;
 
 
-public class StreamNotifier extends ActionBarActivity implements View.OnClickListener {
+public class StreamNotifier extends ActionBarActivity implements View.OnClickListener, FilterChangeListener {
 
     Button addFilterBtn;
     LinearLayout listHolder;
+    FilterManager filterManager;
+
+    public static StreamNotifier instance;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,10 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         addFilterBtn.setOnClickListener(this);
 
         listHolder = (LinearLayout)findViewById(R.id.list_holder);
+
+        filterManager = new FilterManager(getApplicationContext(), this);
+
+        instance = this;
     }
 
 
@@ -71,10 +79,15 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
     protected void onResume(){
         super.onResume();
 
-        NotificationFilter[] filters = FileHelper.getSavedFilters(getApplicationContext());
+        NotificationFilter[] filters = filterManager.getSavedFilters();
         if(filters!=null) {
             buildNotificationList(filters);
         }
+    }
+
+    public void rebuildNotificationList(){
+        NotificationFilter[] filters = filterManager.getSavedFilters();
+        buildNotificationList(filters);
     }
 
     private void buildNotificationList(NotificationFilter[] filters){
@@ -98,4 +111,12 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
 
     }
 
+    @Override
+    public void onFilterChange() {
+        Log.d("filterChange", "updating server");
+    }
+
+    public FilterManager getFilterManager(){
+        return filterManager;
+    }
 }
