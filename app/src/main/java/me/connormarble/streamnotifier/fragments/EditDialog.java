@@ -6,13 +6,11 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import me.connormarble.streamnotifier.Activities.EditFilter;
 import me.connormarble.streamnotifier.Activities.StreamNotifier;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
 import me.connormarble.streamnotifier.R;
-import me.connormarble.streamnotifier.Utils.FileHelper;
-import me.connormarble.streamnotifier.Views.NotificationView;
+import me.connormarble.streamnotifier.Utils.FilterManager;
 
 /**
  * Created by connor on 6/12/15.
@@ -20,6 +18,7 @@ import me.connormarble.streamnotifier.Views.NotificationView;
 public class EditDialog extends DialogFragment implements DialogInterface.OnClickListener {
 
     private NotificationFilter filter;
+    FilterManager filterManager;
 
     public void setFilter(NotificationFilter filter){
         this.filter = filter;
@@ -37,7 +36,11 @@ public class EditDialog extends DialogFragment implements DialogInterface.OnClic
         builder.setNeutralButton("Cancel", this);
         builder.setPositiveButton("Modify", this);
 
+
+        filterManager = ((StreamNotifier)getActivity()).getFilterManager();
+
         return builder.create();
+
     }
 
     @Override
@@ -45,8 +48,8 @@ public class EditDialog extends DialogFragment implements DialogInterface.OnClic
         switch (id){
             case AlertDialog.BUTTON_NEGATIVE:
                 //delete notification
-                FileHelper.removeFilter(filter, getActivity().getApplicationContext());
-                getActivity().recreate();
+                filterManager.removeFilter(filter);
+                ((StreamNotifier)getActivity()).rebuildNotificationList();
                 break;
 
             case AlertDialog.BUTTON_NEUTRAL:

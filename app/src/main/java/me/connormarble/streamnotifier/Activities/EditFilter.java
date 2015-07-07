@@ -9,7 +9,7 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
 import me.connormarble.streamnotifier.R;
-import me.connormarble.streamnotifier.Utils.FileHelper;
+import me.connormarble.streamnotifier.Utils.FilterManager;
 import org.apache.commons.lang.ArrayUtils;
 
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class EditFilter extends Activity implements View.OnClickListener {
                 finish();
                 return;
             case R.id.edit_save_btn:
-                FileHelper.replaceFilter(filter, getNewFilter(), getApplicationContext());
+                StreamNotifier.instance.getFilterManager().replaceFilter(filter, getNewFilter());
                 finish();
                 return;
         }

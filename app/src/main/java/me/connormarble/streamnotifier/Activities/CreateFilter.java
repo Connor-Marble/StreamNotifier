@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.*;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
 import me.connormarble.streamnotifier.R;
-import me.connormarble.streamnotifier.Utils.FileHelper;
+import me.connormarble.streamnotifier.Utils.FilterManager;
 import org.apache.commons.lang.ArrayUtils;
 
 
@@ -65,7 +65,7 @@ public class CreateFilter extends Activity implements View.OnClickListener {
         switch(view.getId()){
             case R.id.save_btn:
                 if(validateForm()){
-                    FileHelper.saveFilter(getNotificationFilter(), getApplicationContext());
+                    StreamNotifier.instance.getFilterManager().saveFilter(getNotificationFilter());
                     finish();
                 }
                 break;
