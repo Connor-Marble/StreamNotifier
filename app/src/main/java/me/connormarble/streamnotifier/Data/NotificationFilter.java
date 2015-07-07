@@ -71,7 +71,7 @@ public class NotificationFilter implements Serializable {
     }
 
     public boolean isActive(){
-        boolean active = false;
+        boolean active = true;
 
         Calendar cal = Calendar.getInstance();
 

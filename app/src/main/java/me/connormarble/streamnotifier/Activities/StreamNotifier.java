@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
 import me.connormarble.streamnotifier.Interfaces.FilterChangeListener;
 import me.connormarble.streamnotifier.R;
+import me.connormarble.streamnotifier.Tasks.UpdateServer;
 import me.connormarble.streamnotifier.Utils.FilterManager;
 import me.connormarble.streamnotifier.Views.NotificationView;
 
@@ -23,8 +24,6 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
     FilterManager filterManager;
 
     public static StreamNotifier instance;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +37,7 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         filterManager = new FilterManager(getApplicationContext(), this);
 
         instance = this;
+        new UpdateServer(getApplicationContext(), filterManager).execute();
     }
 
 
@@ -114,6 +114,7 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
     @Override
     public void onFilterChange() {
         Log.d("filterChange", "updating server");
+        new UpdateServer(getApplicationContext(), filterManager).execute();
     }
 
     public FilterManager getFilterManager(){

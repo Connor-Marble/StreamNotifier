@@ -56,7 +56,7 @@ public class FilterManager {
         }
         catch (ClassNotFoundException ex){
             ex.printStackTrace();
-            return null;
+            return new NotificationFilter[0];
         }
 
         return filterList.toArray(new NotificationFilter[filterList.size()]);
