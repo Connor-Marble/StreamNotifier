@@ -37,16 +37,6 @@ public class GCMHandler extends IntentService{
     protected void onHandleIntent(Intent intent) {
         Bundle extras = intent.getExtras();
 
-        String onlineChannelString = (String)extras.get("channels");
-        String[] onlineChannels = onlineChannelString.substring(2
-                , onlineChannelString.length()-2).split("\",\"");
-
-
-        GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
-
-        String messageType = gcm.getMessageType(intent);
-        Log.d("message type:", messageType);
-
         FilterManager manager = new FilterManager(getBaseContext(), null);
 
         NotificationFilter[] filters = manager.getSavedFilters();
