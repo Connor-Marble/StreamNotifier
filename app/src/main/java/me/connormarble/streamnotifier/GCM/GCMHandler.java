@@ -68,11 +68,11 @@ public class GCMHandler extends IntentService{
         Notification.Builder notificationBuild = new Notification.Builder(getApplicationContext());
         notificationBuild.setContentTitle(channelName + " is live:");
         notificationBuild.setContentText(streamName);
-        notificationBuild.setSmallIcon(R.mipmap.ic_launcher);
+        notificationBuild.setSmallIcon(R.mipmap.notification_icon);
         notificationBuild.setDefaults(Notification.DEFAULT_VIBRATE|Notification.DEFAULT_LIGHTS);
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            notificationBuild.setColor(Color.MAGENTA);
+            notificationBuild.setColor(Color.argb(255,100,255,100));
             notificationBuild.setLights(Color.RED, 100,300);
         }
 
