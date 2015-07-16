@@ -78,17 +78,18 @@ public class NotificationFilter implements Serializable {
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         int minute = cal.get(Calendar.MINUTE);
 
-
-        Log.d("is active", Boolean.toString(enabled&&active));
         active=active && (daysActive.get(cal.get(Calendar.DAY_OF_WEEK)));
 
-        active= active && (hour > startHr);
-        active= active && (hour < endHr);
+        active= active && (hour >= startHr);
+        active= active && (hour <= endHr);
 
-        active = active && (minute > startMin);
-        active = active && (minute < endMin);
+        if(hour==startHr)
+            active = active && (minute >= startMin);
 
-        return true;
+        if(hour==endHr)
+            active = active && (minute < endMin);
+
+        return active;
     }
 
     public String getChannelName() {

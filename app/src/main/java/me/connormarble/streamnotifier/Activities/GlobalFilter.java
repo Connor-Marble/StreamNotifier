@@ -10,6 +10,10 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 import me.connormarble.streamnotifier.R;
 
+import java.util.Calendar;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created by connor on 6/4/15.
  */
@@ -105,5 +109,40 @@ public class GlobalFilter extends Activity implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    public static boolean isActive(Context context){
+
+        SharedPreferences prefs = context.getSharedPreferences("global_filter", Context.MODE_PRIVATE);
+
+        boolean active=true;
+
+        Calendar cal = Calendar.getInstance();
+        String[] days = {"sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"};
+        String day = days[cal.get(Calendar.DAY_OF_WEEK)-1];
+
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+
+        //check if filter is active for this day
+        active = active&&prefs.getBoolean(day, false);
+
+        int startHour = prefs.getInt("start_hour", 0);
+        int endHour = prefs.getInt("end_hour", 23);
+
+        int startMinute = prefs.getInt("start_minute", 0);
+        int endMinute = prefs.getInt("end_minute", 59);
+
+        //check if time is within range
+        active = active&&(hour>=startHour);
+        active = active&&(hour<=endHour);
+
+        if(hour == startHour)
+            active = active&&minute>=startMinute;
+
+        if(hour == endHour)
+            active = active&&minute<=endMinute;
+
+        return active;
     }
 }
