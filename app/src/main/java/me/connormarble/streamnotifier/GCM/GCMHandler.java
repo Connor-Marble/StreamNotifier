@@ -3,9 +3,11 @@ package me.connormarble.streamnotifier.GCM;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,10 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.util.*;
 
 /**
@@ -65,11 +64,18 @@ public class GCMHandler extends IntentService{
     }
 
     private void createNotification(String channelName, String streamName,int notificationID){
+        Uri channelPage = Uri.parse("twitch://stream/"+channelName);
+        Intent viewPage = new Intent(Intent.ACTION_VIEW, channelPage);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,viewPage,0);
+
         Notification.Builder notificationBuild = new Notification.Builder(getApplicationContext());
         notificationBuild.setContentTitle(channelName + " is live:");
         notificationBuild.setContentText(streamName);
         notificationBuild.setSmallIcon(R.mipmap.notification_icon);
-        notificationBuild.setDefaults(Notification.DEFAULT_VIBRATE|Notification.DEFAULT_LIGHTS);
+        notificationBuild.setDefaults(Notification.DEFAULT_VIBRATE|Notification.DEFAULT_LIGHTS|Notification.DEFAULT_SOUND);
+        notificationBuild.setAutoCancel(true);
+        notificationBuild.setContentIntent(pendingIntent);
+
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             notificationBuild.setColor(Color.argb(255,100,255,100));
