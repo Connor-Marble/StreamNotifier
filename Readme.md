@@ -1,4 +1,7 @@
 Stream Notifier
 ===============
 
-This is a work in progess Android app designed to give push notifications when twitch streamers go live. Not only will the app allow users to be notified of streams without clogging their email inboxes, but it allows a great amount of control over when they wish to be notified of activity.
+Stream Notifier is a free open source android app that notifies users when selected Twitch streamers go live. Unlike email based notificatications, StreamNotifier allows users to limit the days of the week and time of day they wish to recieve notifications on a channel by channel basis. 
+
+The goal of this application is to inform users of only the streams they can actually watch without clogging their email accounts.
+
