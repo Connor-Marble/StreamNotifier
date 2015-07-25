@@ -160,8 +160,7 @@ public class UpdateServer extends AsyncTask {
                 String projectNum = context.getString(R.string.project_number);
                 id = GoogleCloudMessaging.getInstance(context).register(projectNum);
             } catch (IOException e) {
-                Toast.makeText(context,
-                        "Connection to Google Services failed, try again later.", Toast.LENGTH_LONG).show();
+                Log.d("get_reg_id","Connection to Google Services failed.");
                 e.printStackTrace();
             }
 
