@@ -56,8 +56,6 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         int id = item.getItemId();
 
         switch (id){
-            case R.id.action_settings:
-                return true;
             case R.id.action_global_filter:
                 startActivity(new Intent(this, GlobalFilter.class));
                 return true;

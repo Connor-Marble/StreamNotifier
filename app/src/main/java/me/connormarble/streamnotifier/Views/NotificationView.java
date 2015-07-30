@@ -2,21 +2,17 @@ package me.connormarble.streamnotifier.Views;
 
 import android.app.DialogFragment;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 
-import me.connormarble.streamnotifier.Activities.EditFilter;
 import me.connormarble.streamnotifier.Activities.StreamNotifier;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
-import me.connormarble.streamnotifier.R;
-import me.connormarble.streamnotifier.fragments.EditDialog;
+import me.connormarble.streamnotifier.Fragments.EditDialog;
 
 /**
  * Created by connor on 5/26/15.

@@ -1,4 +1,4 @@
-package me.connormarble.streamnotifier.fragments;
+package me.connormarble.streamnotifier.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
