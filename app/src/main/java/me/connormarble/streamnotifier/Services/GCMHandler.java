@@ -1,20 +1,19 @@
-package me.connormarble.streamnotifier.GCM;
+package me.connormarble.streamnotifier.Services;
 
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
 import me.connormarble.streamnotifier.Data.NotificationFilter;
 import me.connormarble.streamnotifier.R;
+import me.connormarble.streamnotifier.Receivers.GCMReceiver;
 import me.connormarble.streamnotifier.Utils.FilterManager;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +30,7 @@ public class GCMHandler extends IntentService{
     public GCMHandler() {
         super("GCMHandler");
     }
+    private final int MAX_STREAM_AGE = 1200000;
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -109,9 +109,20 @@ public class GCMHandler extends IntentService{
 
             JSONObject json = new JSONObject(messageBuilder.toString());
 
-            String streamName = json.getJSONArray("streams").getJSONObject(0).getJSONObject("channel").getString("status");
-            if (streamName.contains(filter.getStreamName()))
-                return streamName;
+            JSONArray streams = json.getJSONArray("streams");
+
+            if(streams.length()>0) {
+                String streamStart = streams.getJSONObject(0).getString("created_at");
+
+
+                String streamName = streams.getJSONObject(0).getJSONObject("channel").getString("status");
+
+                if (streamName.contains(filter.getStreamName()) && !alreadyNotified(streamStart, channel) && !isOld(streamStart))
+                    return streamName;
+
+            } else {
+                Log.d("Stream_Check", channel + " is offline");
+            }
 
 
         } catch (MalformedURLException e) {
@@ -123,5 +134,41 @@ public class GCMHandler extends IntentService{
         }
 
         return null;
+    }
+
+    private boolean alreadyNotified(String startTime, String channelName){
+
+        SharedPreferences preferences = getBaseContext().getSharedPreferences("notify_log", MODE_PRIVATE);
+
+        String lastNotifiedStart = preferences.getString(channelName, "");
+
+        if(!lastNotifiedStart.equals(startTime)){
+
+            SharedPreferences.Editor edit = preferences.edit();
+            edit.putString(channelName, startTime);
+            edit.commit();
+
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isOld(String startTime){
+
+        Calendar currentGMT = Calendar.getInstance(TimeZone.getTimeZone("gmt"));
+        Calendar streamStart = Calendar.getInstance(TimeZone.getTimeZone("gmt"));
+
+        int timeCodepos = startTime.indexOf('T');
+        int hour = Integer.parseInt(startTime.substring(timeCodepos + 1, timeCodepos + 2));
+        int minute = Integer.parseInt(startTime.substring(timeCodepos+4, timeCodepos+5));
+
+        streamStart.set(Calendar.HOUR_OF_DAY, hour);
+        streamStart.set(Calendar.MINUTE, minute);
+
+        Log.d("Age_Check", currentGMT.toString() + streamStart.toString());
+
+        //return true if stream is more than 20 minutes old
+        return currentGMT.compareTo(streamStart)>MAX_STREAM_AGE;
     }
 }

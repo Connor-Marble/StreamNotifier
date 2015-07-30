@@ -95,7 +95,7 @@ public class FilterManager {
             objectOut.close();
         }
         catch (EOFException ex){
-            Log.d("SaveDebug","End of filter list");
+            Log.i("SaveDebug","End of filter list");
         }
         catch (IOException ex){
             ex.printStackTrace();

@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
 
-    <permission android:name="me.connormarble.streamnotifier.GCM.permission.C2D_MESSAGE"
+    <permission android:name="me.connormarble.streamnotifier.Receivers.GCM.permission.C2D_MESSAGE"
             android:protectionLevel="signature"/>
     <uses-permission android:name="me.connormarble.streamnotifier.GCM.permission.C2D_MESSAGE"/>
 
@@ -45,14 +45,14 @@
             </intent-filter>
         </activity>
         <receiver
-                android:name=".GCM.GCMReceiver"
+                android:name=".Receivers.GCMReceiver"
                 android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
                 <category android:name="me.connormarble.streamnotifier.GCM"/>
             </intent-filter>
         </receiver>
-        <service android:name=".GCM.GCMHandler"/>
+        <service android:name=".Services.GCMHandler"/>
     </application>
 
 </manifest>
