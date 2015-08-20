@@ -65,7 +65,9 @@
                             android:id="@+id/edit_channelInput"
                             android:hint="Channel Name (required)"
                             android:textSize="24sp"
-                            android:layout_gravity="left"/>
+                            android:layout_gravity="left"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"
+                            android:maxLength="32"/>
 
                     <EditText
                             android:layout_width="wrap_content"
