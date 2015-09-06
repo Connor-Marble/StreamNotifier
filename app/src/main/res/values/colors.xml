@@ -2,4 +2,6 @@
 <resources>
     <color name="oddList">#ffe2ffdd</color>
     <color name="evenList">#ffceffcd</color>
+    <color name="oddList_inactive">#ffe0c5c3</color>
+    <color name="evenList_inactive">#ffae7e7c</color>
 </resources>
