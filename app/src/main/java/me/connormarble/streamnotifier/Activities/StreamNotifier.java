@@ -98,9 +98,18 @@ public class StreamNotifier extends ActionBarActivity implements View.OnClickLis
         int oddColor = getResources().getColor(R.color.oddList);
         int evenColor = getResources().getColor(R.color.evenList);
 
+        int oddColor_inactive = getResources().getColor(R.color.oddList_inactive);
+        int evenColor_inactive = getResources().getColor(R.color.evenList_inactive);
+
+        boolean globallyActive = GlobalFilter.isActive(getApplicationContext());
+
         for(int i =0;i<filters.length;i++){
 
-            int color = i%2==0?evenColor:oddColor;
+            int color;
+            if(filters[i].isActive())
+                color = i%2==0?evenColor:oddColor;
+            else
+                color = i%2==0?evenColor_inactive:oddColor_inactive;
 
             NotificationView notificationView = new NotificationView(getApplicationContext(), filters[i], color, this);
 
