@@ -166,9 +166,13 @@ public class GCMHandler extends IntentService{
         streamStart.set(Calendar.HOUR_OF_DAY, hour);
         streamStart.set(Calendar.MINUTE, minute);
 
-        Log.d("Age_Check", currentGMT.toString() + streamStart.toString());
+        long timeDiff = currentGMT.getTimeInMillis() - streamStart.getTimeInMillis();
+
+        Log.d("Age Diff", Long.toString(timeDiff));
+        if(timeDiff>MAX_STREAM_AGE)
+            Log.d("Age Diff", "Stream is too old!");
 
         //return true if stream is more than 20 minutes old
-        return currentGMT.compareTo(streamStart)>MAX_STREAM_AGE;
+        return (int)timeDiff>MAX_STREAM_AGE;
     }
 }
