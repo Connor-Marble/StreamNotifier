@@ -117,7 +117,7 @@ public class GCMHandler extends IntentService{
 
                 String streamName = streams.getJSONObject(0).getJSONObject("channel").getString("status");
 
-                if (streamName.contains(filter.getStreamName()) && !alreadyNotified(streamStart, channel) && !isOld(streamStart))
+                if (streamName.contains(filter.getStreamName()) && !alreadyNotified(streamStart, channel))
                     return streamName;
 
             } else {
